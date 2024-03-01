@@ -20,7 +20,17 @@ public class StudentController {
 
     @GetMapping("/student/{Id}")
     public ResponseEntity getStudentbyId(@PathVariable int Id){
-        Student student=studentService.getStudentById(Id);
-        return ResponseEntity.ok(Objects.requireNonNullElse(student, "Resource not found"));
+        return ResponseEntity.ok(
+                Objects.requireNonNullElse(studentService.getStudentById(Id),
+                        "Resource not found"));
     }
+
+    @GetMapping("/students")
+    public ResponseEntity getAllStudents(){
+        return ResponseEntity.ok(
+                Objects.requireNonNullElse(
+                        studentService.getAllStudents(), "No Resource found"));
+    }
+
+
 }

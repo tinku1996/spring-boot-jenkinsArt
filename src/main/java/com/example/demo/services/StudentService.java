@@ -20,6 +20,10 @@ public class StudentService {
         return students.get(id);
     }
 
+    public List<Student> getAllStudents(){
+        return students;
+    }
+
     private void fillStudents(){
         students.add(new Student("Sachin","1234","Rajasthan"));
         students.add(new Student("Ram","1235","Rajasthan"));
