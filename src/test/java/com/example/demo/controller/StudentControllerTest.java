@@ -26,4 +26,17 @@ public class StudentControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.city").value("Rajasthan"));
     }
 
+    @Test
+    public void testGetAllStudent() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/students")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("Sachin"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].rollNo").value("1234"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].city").value("Rajasthan"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[2].name").value("Sham"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[2].rollNo").value("1236"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[2].city").value("Maharastra"));
+    }
+
 }
